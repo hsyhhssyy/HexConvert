@@ -57,9 +57,10 @@
             </ComboBox>
         </Grid>
         <Label Content="格式说明：" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="10,35,10,10" TextWrapping="Wrap" Text=""/>
-        <Button Grid.Column="1" Grid.Row="3" Margin="0,5,10,5" VerticalAlignment="Center" Height="30" Content="保存配置" HorizontalAlignment="Right" Width="150"/>
+        <TextBox Name="txtComment" Grid.Row="0" Grid.Column="1" Margin="10,35,10,10" TextWrapping="Wrap" Text=""/>
+        <Button Grid.Column="1" Grid.Row="3" Margin="0,5,10,5" VerticalAlignment="Center" Height="30" Content="保存配置" HorizontalAlignment="Right" Width="150"
+                Click="BtnSaveConfig_Click"/>
         <Button Grid.Row="3" Margin="0,5,165,5" VerticalAlignment="Center" Height="30" Content="读取配置" HorizontalAlignment="Right" Width="150" Grid.ColumnSpan="2"
-                Grid.Column="0" />
+                Grid.Column="0" Click="BtnLoad_Click"/>
     </Grid>
 </Window>

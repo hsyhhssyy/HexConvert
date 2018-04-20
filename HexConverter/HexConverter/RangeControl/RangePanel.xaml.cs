@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace HexConverter.RangeControl
@@ -17,6 +18,14 @@ namespace HexConverter.RangeControl
 
         public Color Color
         {
+            get
+            {
+                if (rectHeader.Fill is SolidColorBrush)
+                {
+                    return ((SolidColorBrush) rectHeader.Fill).Color;
+                }
+                return Colors.Transparent;
+            }
             set => rectHeader.Fill = new SolidColorBrush(value);
         }
 
@@ -35,6 +44,7 @@ namespace HexConverter.RangeControl
             set => txtComment.Text = value;
         }
 
+        public event EventHandler ValueChanged;
 
         private bool _suppressTextChange = true;
         private long _valueHold;
@@ -60,7 +70,6 @@ namespace HexConverter.RangeControl
                 txtBinValue.BorderBrush = Brushes.Black;
                 txtBinValue.Text = Convert.ToString(_valueHold, 2);
             }
-            
 
             _suppressTextChange = false;
         }
@@ -84,6 +93,7 @@ namespace HexConverter.RangeControl
             }
 
             RefreshControls(txtHexValue);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void TxtDecValue_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -105,6 +115,7 @@ namespace HexConverter.RangeControl
             }
 
             RefreshControls(txtDecValue);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void TxtBinValue_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -126,6 +137,12 @@ namespace HexConverter.RangeControl
             }
 
             RefreshControls(txtBinValue);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
+
+        }
+
+        private void RectHeader_OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
 
         }
     }

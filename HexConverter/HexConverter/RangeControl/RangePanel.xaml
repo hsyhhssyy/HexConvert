@@ -17,7 +17,7 @@
             </Grid.ColumnDefinitions>
             <Rectangle Name="rectHeader" StrokeThickness="0"
                    Stroke="Black" Margin="0,0,0,0"
-                   Fill="LightGray"/>
+                   Fill="LightGray" MouseUp="RectHeader_OnMouseUp"/>
 
             <Label Content="备注：" FontSize="16" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center"/>
             <TextBox Name="txtComment" Grid.Column="1" Margin="63,10,10,10" TextWrapping="NoWrap" Text="" FontSize="16" VerticalContentAlignment="Center"/>
